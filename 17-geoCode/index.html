@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Геокодирование адреса</title>
+	<script src="https://api-maps.yandex.ru/2.1/?apikey=fc96abe8-0dc1-4869-8a6e-59f765627611&lang=ru_RU"
+	        type="text/javascript">
+	</script>
+	<script defer src="geoCode.js"></script>
+	<style>
+		body {
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			background-color: cornflowerblue;
+			color: #fff;
+			font-weight: 500;
+		}
+		
+		select, option, input {
+			max-width: 400px;
+			padding: 5px;
+			border-radius: 5px;
+			border: none;
+		}
+	</style>
+</head>
+<body>
+
+<label for="addressInput">Введите адрес:</label>
+<input type="text" id="addressInput">
+
+<select id="resultsDropdown">
+	<option disabled selected>Выбрать значение</option>
+</select>
+
+</body>
+</html>

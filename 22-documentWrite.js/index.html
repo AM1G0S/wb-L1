@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Write</title>
+</head>
+
+<body>
+    <h1>Hello</h1>
+    <script>
+        let depth = 0;
+
+        function writeNestedScripts() {
+            // Выводим текущий уровень вложенности
+            depth++;
+            document.write('<p>Depth: ' + depth + '</p>');
+
+            // Выводим script, в котором запускаем эту же функцию
+            document.write('<script>writeNestedScripts();<\/script>');
+        }
+
+        writeNestedScripts();
+
+        // Максимальное количество вложенных вызовов document.write == 21
+        
+        /* Это ограничение установлено в браузере, т.к. большое число вложенных вызовов может привести к неожиданному поведеню и проблемам с
+          загрузкой и отображением контента, а в худшем случае - к зависанию браузера
+          Это ограничение позволяет разрабочтикам пользоваться вложенными document.write и в то же время не допускает чрезмерное вложение
+         */
+    </script>
+    <h2>Bye</h2>
+</body>
+
+</html>
