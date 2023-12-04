@@ -28,3 +28,10 @@ const func = (array) => {
 }
 
 console.log(func(functionsArray)());
+
+//Второе решение
+const closures = (array) => {
+	return () => {
+		return array.map(fn => fn())
+	}
+};

@@ -1,3 +1,4 @@
+// Первое решение, инфа выведется только в браузере
 function loadImage(url) {
 	return new Promise((resolve, reject) => {
 		const image = new Image();
@@ -28,3 +29,20 @@ loadImage(imageUrl)
 	.catch((error) => {
 		console.error('Ошибка загрузки изображения:', error.message);
 	});
+
+
+//Второе решение
+const getImg = async (url) => {
+	try {
+		const request = await fetch(url);
+		if (request.ok) {
+			return await request.blob();
+		}
+	} catch (e) {
+		console.error(e);
+	}
+};
+
+getImg(imageUrl)
+	.then(image => console.log(image))
+	.catch(e => console.error(e));

@@ -30,3 +30,28 @@ function getMaxLocalStorageSize() {
 	
 	return totalBytes;
 }
+
+// Второй вариант
+//функция принимает параметром формат ('mb') вернет значение в мегабайтах, остальнеы вернут в килобайтах
+
+const getLocalStorageSize = (format = 'kb') => {
+	//проверяем есть ли ключ в хранилище и если нет проводим расчет
+	if (!localStorage.getItem('size')) {
+		let size = 0;
+		//проверяю на 10 мегабайт
+		let mb = 10;
+		try {
+			//заполняем храналище до тех пор пока не будет выдано исключение
+			for (size = 0; size <= mb; size += 1) {
+				//заполняем строкой, так как хранилище принимает только строковые данные
+				localStorage.setItem('test', '0'.repeat(size * 1024 * 1024));
+			}
+		} catch (e) {
+			//если исключение выдано, значит хранилище заполнено и мы можем возвращать результат
+			localStorage.removeItem('test');
+			return format === 'mb' ? size : size * 1024 * 1024;
+		}
+	}
+};
+
+getLocalStorageSize()
